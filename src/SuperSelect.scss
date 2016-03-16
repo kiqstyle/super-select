@@ -79,6 +79,17 @@ $triangle-size: 5px;
 .super-select-options-search-container {
     background: #f2f2f2;
     padding: 15px 10px;
+
+    input[type="search"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+
+        &:focus {
+            border-color: #aaa;
+            outline: none;
+        }
+    }
 }
 
 .super-select-actions {
