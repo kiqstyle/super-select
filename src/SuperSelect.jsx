@@ -9,27 +9,55 @@ var SearchBox = require("./SearchBox.jsx");
 var SuperSelect = React.createClass({
     displayName: "SuperSelect",
 
+    propTypes: {
+        actions: React.PropTypes.arrayOf(
+            React.PropTypes.shape({
+                handler: React.PropTypes.func.isRequired,
+                label: React.PropTypes.string.isRequired,
+                content: React.PropTypes.element
+            })
+        ),
+        content: React.PropTypes.node,
+        contentLabelProvider: React.PropTypes.func,
+        groups: React.PropTypes.array,
+        label: React.PropTypes.string.isRequired,
+        labelKey: React.PropTypes.string,
+        maxLabels: React.PropTypes.number,
+        multiple: React.PropTypes.bool,
+        noLabels: React.PropTypes.bool,
+        onChange: React.PropTypes.func,
+        options: React.PropTypes.array,
+        optionRender: React.PropTypes.func,
+        searchBox: React.PropTypes.bool,
+        searchKeys: React.PropTypes.arrayOf(
+            React.PropTypes.string
+        ),
+        value: React.PropTypes.object,
+        valueKey: React.PropTypes.string,
+        valueLink: React.PropTypes.func
+    },
+
     getDefaultProps: function () {
         "use strict";
 
         return {
-            label: "",
-            options: [],
-            groups: [],
             actions: [],
-            value: null,
-            onChange: null,
-            valueLink: false,
-            multiple: true,
-            valueKey: "id",
-            labelKey: "name",
-            searchBox: true,
-            maxLabels: false,
-            noLabels: false,
-            searchKeys: ["name"],
-            optionRender: null,
             content: null,
-            contentLabelProvider: null
+            contentLabelProvider: null,
+            groups: [],
+            label: "",
+            labelKey: "name",
+            maxLabels: false,
+            multiple: true,
+            noLabels: false,
+            onChange: null,
+            options: [],
+            optionRender: null,
+            searchBox: true,
+            searchKeys: ["name"],
+            value: null,
+            valueKey: "id",
+            valueLink: false
         };
     },
 

@@ -94,7 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".super-select-container,\n.super-select-container * {\n  box-sizing: border-box; }\n\n.super-select-container {\n  position: relative;\n  display: inline-block;\n  font-weight: 100;\n  text-transform: none;\n  font-family: sans-serif; }\n\n.super-select-container + .super-select-container {\n  margin-left: 20px; }\n\n.super-select-content {\n  position: absolute;\n  background: white;\n  z-index: 100;\n  margin-top: -6px;\n  border: 1px solid #ccc;\n  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.08);\n  min-width: 300px; }\n\n.super-select-button {\n  padding: 5px 7px;\n  border: 1px solid transparent;\n  border-radius: 3px;\n  cursor: pointer;\n  display: inline-block;\n  margin-bottom: 5px; }\n  .super-select-button:hover, .super-select-button.open {\n    border: 1px solid #ccc;\n    background: #fefefe; }\n  .super-select-button:after {\n    font-family: 'Glyphicons Halflings';\n    content: \"\\E252\";\n    opacity: .4;\n    font-size: 11px;\n    margin-left: 5px; }\n  .super-select-button.open:after {\n    content: \"\\E253\"; }\n\n.super-select-button-label-value {\n  font-weight: bold;\n  text-transform: none; }\n  .super-select-button-label-value:after {\n    content: \", \"; }\n  .super-select-button-label-value:last-child:after {\n    content: \"\"; }\n  .super-select-button-label-value:nth-last-child(2):after {\n    content: \" e \"; }\n\n.super-select-options-search-container {\n  background: #f2f2f2;\n  padding: 15px 10px; }\n\n.super-select-actions {\n  margin: 0;\n  padding: 0;\n  background: #fafafa; }\n  .super-select-actions .super-select-action {\n    list-style: none;\n    color: #4B93BF;\n    padding: 3px 10px;\n    cursor: pointer;\n    display: block;\n    margin: 0; }\n    .super-select-actions .super-select-action .icon {\n      margin-right: 10px;\n      color: black;\n      color: silver; }\n    .super-select-actions .super-select-action:hover {\n      color: #326a8c; }\n      .super-select-actions .super-select-action:hover .icon {\n        color: black; }\n\n.super-select-options-list {\n  padding: 0;\n  margin: 0;\n  max-height: 300px;\n  overflow: auto; }\n\n.super-select-options-list-item {\n  list-style: none;\n  padding: 0; }\n  .super-select-options-list-item label {\n    display: block;\n    padding: 5px 10px;\n    cursor: pointer;\n    margin: 0;\n    transition: all ease-in .1s;\n    text-transform: none; }\n    .super-select-options-list-item label input[type=\"checkbox\"] {\n      margin-right: 5px;\n      vertical-align: middle; }\n  .super-select-options-list-item.not-found {\n    padding: 10px;\n    color: #999; }\n\n.super-select-options-list-item label:hover,\n.super-select-options-list-item.hover label {\n  background: #b5eaed; }\n", ""]);
+	exports.push([module.id, ".super-select-container,\n.super-select-container * {\n  box-sizing: border-box; }\n\n.super-select-container {\n  position: relative;\n  display: inline-block;\n  font-weight: 100;\n  text-transform: none;\n  font-family: sans-serif; }\n\n.super-select-container + .super-select-container {\n  margin-left: 20px; }\n\n.super-select-content {\n  position: absolute;\n  background: white;\n  z-index: 100;\n  margin-top: -6px;\n  border: 1px solid #ccc;\n  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.08);\n  min-width: 300px; }\n\n.super-select-button {\n  padding: 5px 7px;\n  border: 1px solid transparent;\n  border-radius: 3px;\n  cursor: pointer;\n  display: inline-block;\n  margin-bottom: 5px; }\n  .super-select-button:hover, .super-select-button.open {\n    border: 1px solid #ccc;\n    background: #fefefe; }\n  .super-select-button:after {\n    font-family: 'Glyphicons Halflings';\n    content: \"\\E252\";\n    opacity: .4;\n    font-size: 11px;\n    margin-left: 5px; }\n  .super-select-button.open:after {\n    content: \"\\E253\"; }\n\n.super-select-button-label-value {\n  font-weight: bold;\n  text-transform: none; }\n  .super-select-button-label-value:after {\n    content: \", \"; }\n  .super-select-button-label-value:last-child:after {\n    content: \"\"; }\n  .super-select-button-label-value:nth-last-child(2):after {\n    content: \" e \"; }\n\n.super-select-options-search-container {\n  background: #f2f2f2;\n  padding: 15px 10px; }\n  .super-select-options-search-container input[type=\"search\"] {\n    width: 100%;\n    padding: 5px;\n    border: 1px solid #ccc; }\n    .super-select-options-search-container input[type=\"search\"]:focus {\n      border-color: #aaa;\n      outline: none; }\n\n.super-select-actions {\n  margin: 0;\n  padding: 0;\n  background: #fafafa; }\n  .super-select-actions .super-select-action {\n    list-style: none;\n    color: #4B93BF;\n    padding: 3px 10px;\n    cursor: pointer;\n    display: block;\n    margin: 0; }\n    .super-select-actions .super-select-action .icon {\n      margin-right: 10px;\n      color: black;\n      color: silver; }\n    .super-select-actions .super-select-action:hover {\n      color: #326a8c; }\n      .super-select-actions .super-select-action:hover .icon {\n        color: black; }\n\n.super-select-options-list {\n  padding: 0;\n  margin: 0;\n  max-height: 300px;\n  overflow: auto; }\n\n.super-select-options-list-item {\n  list-style: none;\n  padding: 0; }\n  .super-select-options-list-item label {\n    display: block;\n    padding: 5px 10px;\n    cursor: pointer;\n    margin: 0;\n    transition: all ease-in .1s;\n    text-transform: none; }\n    .super-select-options-list-item label input[type=\"checkbox\"] {\n      margin-right: 5px;\n      vertical-align: middle; }\n  .super-select-options-list-item.not-found {\n    padding: 10px;\n    color: #999; }\n\n.super-select-options-list-item label:hover,\n.super-select-options-list-item.hover label {\n  background: #b5eaed; }\n", ""]);
 
 	// exports
 
@@ -426,27 +426,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	var SuperSelect = React.createClass({
 	    displayName: "SuperSelect",
 
+	    propTypes: {
+	        actions: React.PropTypes.arrayOf(React.PropTypes.shape({
+	            handler: React.PropTypes.func.isRequired,
+	            label: React.PropTypes.string.isRequired,
+	            content: React.PropTypes.element
+	        })),
+	        content: React.PropTypes.node,
+	        contentLabelProvider: React.PropTypes.func,
+	        groups: React.PropTypes.array,
+	        label: React.PropTypes.string.isRequired,
+	        labelKey: React.PropTypes.string,
+	        maxLabels: React.PropTypes.number,
+	        multiple: React.PropTypes.bool,
+	        noLabels: React.PropTypes.bool,
+	        onChange: React.PropTypes.func,
+	        options: React.PropTypes.array,
+	        optionRender: React.PropTypes.func,
+	        searchBox: React.PropTypes.bool,
+	        searchKeys: React.PropTypes.arrayOf(React.PropTypes.string),
+	        value: React.PropTypes.object,
+	        valueKey: React.PropTypes.string,
+	        valueLink: React.PropTypes.func
+	    },
+
 	    getDefaultProps: function getDefaultProps() {
 	        "use strict";
 
 	        return {
-	            label: "",
-	            options: [],
-	            groups: [],
 	            actions: [],
-	            value: null,
-	            onChange: null,
-	            valueLink: false,
-	            multiple: true,
-	            valueKey: "id",
-	            labelKey: "name",
-	            searchBox: true,
-	            maxLabels: false,
-	            noLabels: false,
-	            searchKeys: ["name"],
-	            optionRender: null,
 	            content: null,
-	            contentLabelProvider: null
+	            contentLabelProvider: null,
+	            groups: [],
+	            label: "",
+	            labelKey: "name",
+	            maxLabels: false,
+	            multiple: true,
+	            noLabels: false,
+	            onChange: null,
+	            options: [],
+	            optionRender: null,
+	            searchBox: true,
+	            searchKeys: ["name"],
+	            value: null,
+	            valueKey: "id",
+	            valueLink: false
 	        };
 	    },
 

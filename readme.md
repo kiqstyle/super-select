@@ -22,20 +22,20 @@ npm run dev
 
 ## API
 ### Props
-#### actions
-#### content
-#### contentLabelProvider
-#### groups
-#### label
-#### labelkey
-#### maxLabels
-#### multiple
-#### noLabels
-#### onChange
-#### optionRender
-#### options
-#### searchBox
-#### searchKey
-#### value
-#### valueKey
-#### valueLink
+#### [x] actions
+#### [x] content
+#### [ ] contentLabelProvider
+#### [ ] groups
+#### [x] label
+#### [x] labelkey
+#### [x] maxLabels
+#### [~] multiple
+#### [x] noLabels
+#### [x] onChange
+#### [ ] optionRender
+#### [x] options
+#### [x] searchBox
+#### [x] searchKey
+#### [x] value
+#### [x] valueKey
+#### [x] valueLink
