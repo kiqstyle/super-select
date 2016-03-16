@@ -1,0 +1,35 @@
+{
+  "name": "super-select",
+  "keywords": [
+    "react-component",
+    "select",
+    "select-multiple"
+  ],
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --progress --colors --watch",
+    "dev": "webpack-dev-server --inline --hot"
+  },
+  "author": "Luís Henrique Faria <luish.faria@gmail.com>",
+  "dependencies": {
+    "fuse.js": "^1.3.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.5.0",
+    "browserify": "~11.2.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.4.0",
+    "eslint-plugin-react": "^4.2.3",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.14"
+  }
+}
