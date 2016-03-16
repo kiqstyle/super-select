@@ -1,6 +1,10 @@
 var React = require("react");
-var ReactDOM = require("react-dom");
 var Fuse = require("fuse.js");
+
+var Button = require("./Button.jsx");
+var OptionsList = require("./OptionsList.jsx");
+var Actions = require("./Actions.jsx");
+var SearchBox = require("./SearchBox.jsx");
 
 var SuperSelect = React.createClass({
     displayName: "SuperSelect",
@@ -10,11 +14,22 @@ var SuperSelect = React.createClass({
 
         return {
             label: "",
-            selecteds: [],
-            multiple: true,
-            valueLink: false,
             options: [],
-            groups: []
+            groups: [],
+            actions: [],
+            value: null,
+            onChange: null,
+            valueLink: false,
+            multiple: true,
+            valueKey: "id",
+            labelKey: "name",
+            searchBox: true,
+            maxLabels: false,
+            noLabels: false,
+            searchKeys: ["name"],
+            optionRender: null,
+            content: null,
+            contentLabelProvider: null
         };
     },
 
@@ -28,13 +43,50 @@ var SuperSelect = React.createClass({
         };
     },
 
+    componentDidMount: function () {
+        "use strict";
+
+        this.refs.container.addEventListener("click", this.addSuperSelectToEvent);
+        document.addEventListener("click", this.closeOnClickOutside);
+    },
+
+    componentWillUnmount: function () {
+        "use strict";
+
+        this.refs.container.removeEventListener("click", this.addSuperSelectToEvent);
+        document.removeEventListener("click", this.closeOnClickOutside);
+    },
+
+    addSuperSelectToEvent: function (e) {
+        "use strict";
+
+        e.superSelect = this;
+    },
+
+    closeOnClickOutside: function (e) {
+        "use strict";
+        var eventSuperSelect = e.superSelect || false;
+        if (!eventSuperSelect || eventSuperSelect !== this) {
+            this.setState({
+                open: false,
+                pseudoHover: null
+            });
+        }
+    },
+
+    getAllOptions: function () {
+        "use strict";
+
+        return this.props.options || [];
+    },
+
     getOptions: function () {
         "use strict";
 
         var options = this.props.options || [];
         var q = this.state.q;
         var fuse = new Fuse(options, {
-            keys: ["name"],
+            keys: this.props.searchKeys,
             threshold: 0.4
         });
 
@@ -48,101 +100,114 @@ var SuperSelect = React.createClass({
     getValue: function () {
         "use strict";
 
-        return this.props.valueLink.value || [];
+        var value;
+        if (this.props.valueLink) {
+            value = this.props.valueLink.value;
+        } else {
+            value = this.props.value;
+        }
+
+        if (value === undefined || value === null) {
+            value = this.props.multiple ? [] : null;
+        }
+
+        return value;
     },
 
     buildbutton: function () {
         "use strict";
 
-        var className = "super-select-button" + (this.state.open ? " open" : "");
-        var text = [];
-        text.push(
-            <span className="super-select-button-label">
-                { this.props.label }
-            </span>
-        );
-        if (this.getValue().length) {
-            text.push(": ");
-
-            if (this.getValue().length === this.getOptions().length) {
-                text.push(
-                    <span className="super-select-button-label-value">
-                        todos
-                    </span>
-                );
-            } else {
-                this.getValue().map(function (item) {
-                    text.push(
-                        <span className="super-select-button-label-value">
-                            { item.name }
-                        </span>
-                    );
-                });
-            }
-
-        }
-
         return (
-            <label className={ "super-select-button " + (this.state.open ? "open" : "") }
-                onClick={ this.open }
-            >
-                { text }
-            </label>
+            <Button
+                label={ this.props.label }
+                open={ this.state.open }
+                value={ this.getValue() }
+                options={ this.getOptions() }
+                allOptions={ this.getAllOptions() }
+                valueKey={ this.props.valueKey }
+                labelKey={ this.props.labelKey }
+                multiple={ this.props.multiple }
+                toggle={ this.toggle }
+                maxLabels={ this.props.maxLabels }
+                noLabels={ this.props.noLabels }
+            />
         );
     },
 
-    componentDidUpdate: function () {
+    toggle: function () {
         "use strict";
 
-        if (this.state.open) {
-            this.refs.q.focus();
-        }
-    },
-
-    open: function () {
-        "use strict";
-
-        this.setState({open: !this.state.open});
+        this.setState({
+            open: !this.state.open,
+            pseudoHover: null
+        });
     },
 
     isChecked: function (item, returnIndex) {
         "use strict";
 
         var index = false;
-        var found = this.getValue().filter(function (option, i) {
-            if (item.id === option.id) {
-                index = i;
-                return true;
-            }
-        }).length > 0;
+        var value = this.getValue();
+        var found = false;
+        var valueKey = this.props.valueKey;
 
-        return returnIndex ? index : found;
+        if (this.props.multiple) {
+            found = value.filter(function (option, i) {
+                if (item.id == option.id) {
+                    index = i;
+                    return true;
+                }
+            }).length > 0;
+
+            return returnIndex ? index : found;
+        }
+
+        return item[valueKey] == value[valueKey];
     },
 
     handleChange: function (item) {
         "use strict";
 
         var value = this.getValue();
-        var current = this.isChecked(item, true);
-        if (current !== false) {
-            value.splice(current, 1);
+        var current;
+
+        if (this.props.multiple) {
+            current = this.isChecked(item, true);
+
+            if (current !== false) {
+                value.splice(current, 1);
+            } else {
+                value.push(item);
+            }
         } else {
-            value.push(item);
+            value = item;
         }
 
-        this.props.valueLink.requestChange(value);
+        this.dispatchChanges(value);
+    },
+
+    dispatchChanges: function (newValue) {
+        "use strict";
+
+        if (this.props.valueLink) {
+            this.props.valueLink.requestChange(newValue);
+        } else if (typeof this.props.onChange === "function") {
+            this.props.onChange(newValue);
+        }
     },
 
     clean: function () {
         "use strict";
 
-        this.props.valueLink.requestChange([]);
+        this.dispatchChanges(
+            this.props.multiple ? [] : null
+        );
     },
 
     selectAll: function () {
         "use strict";
 
-        this.props.valueLink.requestChange(this.getOptions());
+        this.dispatchChanges(this.getOptions());
     },
 
     handleChangeQ: function (event) {
@@ -161,7 +226,10 @@ var SuperSelect = React.createClass({
         var isEnter = e.key === "Enter";
 
         if (isEnter && !isNaN(currentPosition)) {
-            this.handleChange(this.getOptions()[currentPosition]);
+            var option = this.getOptions()[currentPosition] || false;
+            if (option) {
+                this.handleChange(option);
+            }
         }
 
         switch (e.key) {
@@ -181,56 +249,68 @@ var SuperSelect = React.createClass({
     buildOptions: function () {
         "use strict";
 
-        var self = this;
-        if (this.state.open) {
-            return (
-                <div className="super-select-options-container"
-                    onKeyUp={ this.handleNavigationKeys }
-                >
-                    <div className="super-select-options-search-container">
-                        <input
-                            type="search"
-                            value={ this.state.q }
-                            onChange={ this.handleChangeQ }
-                            placeholder="Digite para filtrar opção..."
-                            ref="q"
-                        />
-                    </div>
-                    <div className="super-select-actions">
-                        <span className="super-select-action" onClick={ this.selectAll }>Selecionar todos</span>
-                        <span className="super-select-action" onClick={ this.clean }>Limpar seleção</span>
-                    </div>
-                    <ul className="super-select-options-list">
-                        { function () {
-                            var options = self.getOptions();
-                            if (!options.length) {
-                                return (
-                                    <li className="super-select-options-list-item not-found">
-                                        Nada encontrado :/
-                                    </li>
-                                );
-                            }
+        return (
+            <OptionsList
+                options={ this.getOptions() }
+                handleNavigationKeys={ this.handleNavigationKeys }
+                isChecked={ this.isChecked }
+                handleChange={ this.handleChange }
+                currentHover={ this.state.pseudoHover }
+                labelKey={ this.props.labelKey }
+                actions={ this.props.actions }
+            />
+        );
+    },
 
-                            return options.map(function (item, index) {
-                                var className = "super-select-options-list-item";
-                                if (index === self.state.pseudoHover) {
-                                    className += " hover";
-                                }
-                                return (
-                                    <li key={ index } className={ className }>
-                                        <label>
-                                            <input
-                                                type="checkbox"
-                                                checked={ self.isChecked(item) }
-                                                onChange={ self.handleChange.bind(null, item) }
-                                            />
-                                            { item.name }
-                                        </label>
-                                    </li>
-                                );
-                            });
-                        }() }
-                    </ul>
+    buildSearchBox: function () {
+        "use strict";
+
+        return (
+            <SearchBox
+                searchArgument={ this.state.q }
+                searchArgumentChange={ this.handleChangeQ }
+                searchKeys={ this.props.searchKeys }
+            />
+        );
+    },
+
+    buildActions: function () {
+        "use strict";
+
+        var actions = [];
+        if (this.props.options.length) {
+            actions.push({
+                label: "Selecionar todos",
+                handler: this.selectAll,
+                icon: "ok"
+            });
+            actions.push({
+                label: "Limpar seleção",
+                handler: this.clean,
+                icon: "remove"
+            });
+        }
+        actions = actions.concat(this.props.actions);
+
+        return <Actions actions={ actions } />;
+    },
+
+    buildContent: function () {
+        "use strict";
+
+        var content = [];
+
+        if (this.state.open) {
+            if (this.props.searchBox) {
+                content.push(this.buildSearchBox());
+            }
+
+            content.push(this.buildActions());
+            content.push(this.props.content || this.buildOptions());
+
+            return (
+                <div className="super-select-content">
+                    { content }
                 </div>
             );
         }
@@ -240,9 +320,11 @@ var SuperSelect = React.createClass({
         "use strict";
 
         return (
-            <div className="super-select-container">
+            <div className="super-select-container" ref="container"
+                onKeyUp={ this.handleNavigationKeys }
+            >
                 { this.buildbutton() }
-                { this.buildOptions() }
+                { this.buildContent() }
             </div>
         );
     }

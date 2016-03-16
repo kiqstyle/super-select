@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("React"), require("ReactDOM"));
+		module.exports = factory(require("React"));
 	else if(typeof define === 'function' && define.amd)
-		define(["React", "ReactDOM"], factory);
+		define(["React"], factory);
 	else if(typeof exports === 'object')
-		exports["SuperSelect"] = factory(require("React"), require("ReactDOM"));
+		exports["SuperSelect"] = factory(require("React"));
 	else
-		root["SuperSelect"] = factory(root["React"], root["ReactDOM"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_7__) {
+		root["SuperSelect"] = factory(root["React"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -94,7 +94,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, ".super-select-container {\n  position: relative;\n  display: inline-block;\n  font-weight: 100;\n  text-transform: none; }\n\n.super-select-container + .super-select-container {\n  margin-left: 20px; }\n\n.super-select-content {\n  position: absolute;\n  background: white;\n  z-index: 100;\n  margin-top: -6px;\n  border: 1px solid #ccc;\n  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.08);\n  min-width: 300px; }\n\n.super-select-options-search-container {\n  background: #f2f2f2;\n  padding: 15px 10px; }\n\n.super-select-actions {\n  margin: 0;\n  padding: 0;\n  background: #fafafa; }\n  .super-select-actions .super-select-action {\n    list-style: none;\n    color: #4B93BF;\n    padding: 3px 10px;\n    cursor: pointer;\n    display: block;\n    margin: 0; }\n    .super-select-actions .super-select-action .icon {\n      margin-right: 10px;\n      color: black;\n      color: silver; }\n    .super-select-actions .super-select-action:hover {\n      color: #326a8c; }\n      .super-select-actions .super-select-action:hover .icon {\n        color: black; }\n\n.super-select-options-list {\n  padding: 0;\n  margin: 0;\n  max-height: 300px;\n  overflow: auto; }\n\n.super-select-options-list-item {\n  list-style: none;\n  padding: 0; }\n  .super-select-options-list-item label {\n    display: block;\n    padding: 5px 10px;\n    cursor: pointer;\n    margin: 0;\n    transition: all ease-in .1s;\n    text-transform: none; }\n    .super-select-options-list-item label input[type=\"checkbox\"] {\n      margin-right: 5px;\n      vertical-align: middle; }\n  .super-select-options-list-item.not-found {\n    padding: 10px;\n    color: #999; }\n\n.super-select-options-list-item label:hover,\n.super-select-options-list-item.hover label {\n  background: #b5eaed; }\n\n.super-select-button {\n  padding: 5px 7px;\n  border: 1px solid transparent;\n  border-radius: 3px;\n  cursor: pointer; }\n  .super-select-button:hover, .super-select-button.open {\n    border: 1px solid #ccc;\n    background: #fefefe; }\n  .super-select-button:after {\n    font-family: 'Glyphicons Halflings';\n    content: \"\\E252\";\n    opacity: .4;\n    font-size: 11px;\n    margin-left: 5px; }\n  .super-select-button.open:after {\n    content: \"\\E253\"; }\n\n.super-select-button-label-value {\n  font-weight: bold;\n  text-transform: none; }\n  .super-select-button-label-value:after {\n    content: \", \"; }\n  .super-select-button-label-value:last-child:after {\n    content: \"\"; }\n  .super-select-button-label-value:nth-last-child(2):after {\n    content: \" e \"; }\n", ""]);
+	exports.push([module.id, ".super-select-container,\n.super-select-container * {\n  box-sizing: border-box; }\n\n.super-select-container {\n  position: relative;\n  display: inline-block;\n  font-weight: 100;\n  text-transform: none;\n  font-family: sans-serif; }\n\n.super-select-container + .super-select-container {\n  margin-left: 20px; }\n\n.super-select-content {\n  position: absolute;\n  background: white;\n  z-index: 100;\n  margin-top: -6px;\n  border: 1px solid #ccc;\n  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.08);\n  min-width: 300px; }\n\n.super-select-button {\n  padding: 5px 7px;\n  border: 1px solid transparent;\n  border-radius: 3px;\n  cursor: pointer;\n  display: inline-block;\n  margin-bottom: 5px; }\n  .super-select-button:hover, .super-select-button.open {\n    border: 1px solid #ccc;\n    background: #fefefe; }\n  .super-select-button:after {\n    font-family: 'Glyphicons Halflings';\n    content: \"\\E252\";\n    opacity: .4;\n    font-size: 11px;\n    margin-left: 5px; }\n  .super-select-button.open:after {\n    content: \"\\E253\"; }\n\n.super-select-button-label-value {\n  font-weight: bold;\n  text-transform: none; }\n  .super-select-button-label-value:after {\n    content: \", \"; }\n  .super-select-button-label-value:last-child:after {\n    content: \"\"; }\n  .super-select-button-label-value:nth-last-child(2):after {\n    content: \" e \"; }\n\n.super-select-options-search-container {\n  background: #f2f2f2;\n  padding: 15px 10px; }\n\n.super-select-actions {\n  margin: 0;\n  padding: 0;\n  background: #fafafa; }\n  .super-select-actions .super-select-action {\n    list-style: none;\n    color: #4B93BF;\n    padding: 3px 10px;\n    cursor: pointer;\n    display: block;\n    margin: 0; }\n    .super-select-actions .super-select-action .icon {\n      margin-right: 10px;\n      color: black;\n      color: silver; }\n    .super-select-actions .super-select-action:hover {\n      color: #326a8c; }\n      .super-select-actions .super-select-action:hover .icon {\n        color: black; }\n\n.super-select-options-list {\n  padding: 0;\n  margin: 0;\n  max-height: 300px;\n  overflow: auto; }\n\n.super-select-options-list-item {\n  list-style: none;\n  padding: 0; }\n  .super-select-options-list-item label {\n    display: block;\n    padding: 5px 10px;\n    cursor: pointer;\n    margin: 0;\n    transition: all ease-in .1s;\n    text-transform: none; }\n    .super-select-options-list-item label input[type=\"checkbox\"] {\n      margin-right: 5px;\n      vertical-align: middle; }\n  .super-select-options-list-item.not-found {\n    padding: 10px;\n    color: #999; }\n\n.super-select-options-list-item label:hover,\n.super-select-options-list-item.hover label {\n  background: #b5eaed; }\n", ""]);
 
 	// exports
 
@@ -416,8 +416,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	"use strict";
 
 	var React = __webpack_require__(6);
-	var ReactDOM = __webpack_require__(7);
-	var Fuse = __webpack_require__(8);
+	var Fuse = __webpack_require__(7);
+
+	var Button = __webpack_require__(8);
+	var OptionsList = __webpack_require__(9);
+	var Actions = __webpack_require__(11);
+	var SearchBox = __webpack_require__(13);
 
 	var SuperSelect = React.createClass({
 	    displayName: "SuperSelect",
@@ -427,11 +431,22 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return {
 	            label: "",
-	            selecteds: [],
-	            multiple: true,
-	            valueLink: false,
 	            options: [],
-	            groups: []
+	            groups: [],
+	            actions: [],
+	            value: null,
+	            onChange: null,
+	            valueLink: false,
+	            multiple: true,
+	            valueKey: "id",
+	            labelKey: "name",
+	            searchBox: true,
+	            maxLabels: false,
+	            noLabels: false,
+	            searchKeys: ["name"],
+	            optionRender: null,
+	            content: null,
+	            contentLabelProvider: null
 	        };
 	    },
 
@@ -445,13 +460,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	    },
 
+	    componentDidMount: function componentDidMount() {
+	        "use strict";
+
+	        this.refs.container.addEventListener("click", this.addSuperSelectToEvent);
+	        document.addEventListener("click", this.closeOnClickOutside);
+	    },
+
+	    componentWillUnmount: function componentWillUnmount() {
+	        "use strict";
+
+	        this.refs.container.removeEventListener("click", this.addSuperSelectToEvent);
+	        document.removeEventListener("click", this.closeOnClickOutside);
+	    },
+
+	    addSuperSelectToEvent: function addSuperSelectToEvent(e) {
+	        "use strict";
+
+	        e.superSelect = this;
+	    },
+
+	    closeOnClickOutside: function closeOnClickOutside(e) {
+	        "use strict";
+
+	        var eventSuperSelect = e.superSelect || false;
+	        if (!eventSuperSelect || eventSuperSelect !== this) {
+	            this.setState({
+	                open: false,
+	                pseudoHover: null
+	            });
+	        }
+	    },
+
+	    getAllOptions: function getAllOptions() {
+	        "use strict";
+
+	        return this.props.options || [];
+	    },
+
 	    getOptions: function getOptions() {
 	        "use strict";
 
 	        var options = this.props.options || [];
 	        var q = this.state.q;
 	        var fuse = new Fuse(options, {
-	            keys: ["name"],
+	            keys: this.props.searchKeys,
 	            threshold: 0.4
 	        });
 
@@ -465,100 +518,110 @@ return /******/ (function(modules) { // webpackBootstrap
 	    getValue: function getValue() {
 	        "use strict";
 
-	        return this.props.valueLink.value || [];
+	        var value;
+	        if (this.props.valueLink) {
+	            value = this.props.valueLink.value;
+	        } else {
+	            value = this.props.value;
+	        }
+
+	        if (value === undefined || value === null) {
+	            value = this.props.multiple ? [] : null;
+	        }
+
+	        return value;
 	    },
 
 	    buildbutton: function buildbutton() {
 	        "use strict";
 
-	        var className = "super-select-button" + (this.state.open ? " open" : "");
-	        var text = [];
-	        text.push(React.createElement(
-	            "span",
-	            { className: "super-select-button-label" },
-	            this.props.label
-	        ));
-	        if (this.getValue().length) {
-	            text.push(": ");
-
-	            if (this.getValue().length === this.getOptions().length) {
-	                text.push(React.createElement(
-	                    "span",
-	                    { className: "super-select-button-label-value" },
-	                    "todos"
-	                ));
-	            } else {
-	                this.getValue().map(function (item) {
-	                    text.push(React.createElement(
-	                        "span",
-	                        { className: "super-select-button-label-value" },
-	                        item.name
-	                    ));
-	                });
-	            }
-	        }
-
-	        return React.createElement(
-	            "label",
-	            { className: "super-select-button " + (this.state.open ? "open" : ""),
-	                onClick: this.open
-	            },
-	            text
-	        );
+	        return React.createElement(Button, {
+	            label: this.props.label,
+	            open: this.state.open,
+	            value: this.getValue(),
+	            options: this.getOptions(),
+	            allOptions: this.getAllOptions(),
+	            valueKey: this.props.valueKey,
+	            labelKey: this.props.labelKey,
+	            multiple: this.props.multiple,
+	            toggle: this.toggle,
+	            maxLabels: this.props.maxLabels,
+	            noLabels: this.props.noLabels
+	        });
 	    },
 
-	    componentDidUpdate: function componentDidUpdate() {
+	    toggle: function toggle() {
 	        "use strict";
 
-	        if (this.state.open) {
-	            this.refs.q.focus();
-	        }
-	    },
-
-	    open: function open() {
-	        "use strict";
-
-	        this.setState({ open: !this.state.open });
+	        this.setState({
+	            open: !this.state.open,
+	            pseudoHover: null
+	        });
 	    },
 
 	    isChecked: function isChecked(item, returnIndex) {
 	        "use strict";
 
 	        var index = false;
-	        var found = this.getValue().filter(function (option, i) {
-	            if (item.id === option.id) {
-	                index = i;
-	                return true;
-	            }
-	        }).length > 0;
+	        var value = this.getValue();
+	        var found = false;
+	        var valueKey = this.props.valueKey;
 
-	        return returnIndex ? index : found;
+	        if (this.props.multiple) {
+	            found = value.filter(function (option, i) {
+	                if (item.id == option.id) {
+	                    index = i;
+	                    return true;
+	                }
+	            }).length > 0;
+
+	            return returnIndex ? index : found;
+	        }
+
+	        return item[valueKey] == value[valueKey];
 	    },
 
 	    handleChange: function handleChange(item) {
 	        "use strict";
 
 	        var value = this.getValue();
-	        var current = this.isChecked(item, true);
-	        if (current !== false) {
-	            value.splice(current, 1);
+	        var current;
+
+	        if (this.props.multiple) {
+	            current = this.isChecked(item, true);
+
+	            if (current !== false) {
+	                value.splice(current, 1);
+	            } else {
+	                value.push(item);
+	            }
 	        } else {
-	            value.push(item);
+	            value = item;
 	        }
 
-	        this.props.valueLink.requestChange(value);
+	        this.dispatchChanges(value);
+	    },
+
+	    dispatchChanges: function dispatchChanges(newValue) {
+	        "use strict";
+
+	        if (this.props.valueLink) {
+	            this.props.valueLink.requestChange(newValue);
+	        } else if (typeof this.props.onChange === "function") {
+	            this.props.onChange(newValue);
+	        }
 	    },
 
 	    clean: function clean() {
 	        "use strict";
 
-	        this.props.valueLink.requestChange([]);
+	        this.dispatchChanges(this.props.multiple ? [] : null);
 	    },
 
 	    selectAll: function selectAll() {
 	        "use strict";
 
-	        this.props.valueLink.requestChange(this.getOptions());
+	        this.dispatchChanges(this.getOptions());
 	    },
 
 	    handleChangeQ: function handleChangeQ(event) {
@@ -577,7 +640,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var isEnter = e.key === "Enter";
 
 	        if (isEnter && !isNaN(currentPosition)) {
-	            this.handleChange(this.getOptions()[currentPosition]);
+	            var option = this.getOptions()[currentPosition] || false;
+	            if (option) {
+	                this.handleChange(option);
+	            }
 	        }
 
 	        switch (e.key) {
@@ -597,73 +663,65 @@ return /******/ (function(modules) { // webpackBootstrap
 	    buildOptions: function buildOptions() {
 	        "use strict";
 
-	        var self = this;
+	        return React.createElement(OptionsList, {
+	            options: this.getOptions(),
+	            handleNavigationKeys: this.handleNavigationKeys,
+	            isChecked: this.isChecked,
+	            handleChange: this.handleChange,
+	            currentHover: this.state.pseudoHover,
+	            labelKey: this.props.labelKey,
+	            actions: this.props.actions
+	        });
+	    },
+
+	    buildSearchBox: function buildSearchBox() {
+	        "use strict";
+
+	        return React.createElement(SearchBox, {
+	            searchArgument: this.state.q,
+	            searchArgumentChange: this.handleChangeQ,
+	            searchKeys: this.props.searchKeys
+	        });
+	    },
+
+	    buildActions: function buildActions() {
+	        "use strict";
+
+	        var actions = [];
+	        if (this.props.options.length) {
+	            actions.push({
+	                label: "Selecionar todos",
+	                handler: this.selectAll,
+	                icon: "ok"
+	            });
+	            actions.push({
+	                label: "Limpar seleção",
+	                handler: this.clean,
+	                icon: "remove"
+	            });
+	        }
+	        actions = actions.concat(this.props.actions);
+
+	        return React.createElement(Actions, { actions: actions });
+	    },
+
+	    buildContent: function buildContent() {
+	        "use strict";
+
+	        var content = [];
+
 	        if (this.state.open) {
+	            if (this.props.searchBox) {
+	                content.push(this.buildSearchBox());
+	            }
+
+	            content.push(this.buildActions());
+	            content.push(this.props.content || this.buildOptions());
+
 	            return React.createElement(
 	                "div",
-	                { className: "super-select-options-container",
-	                    onKeyUp: this.handleNavigationKeys
-	                },
-	                React.createElement(
-	                    "div",
-	                    { className: "super-select-options-search-container" },
-	                    React.createElement("input", {
-	                        type: "search",
-	                        value: this.state.q,
-	                        onChange: this.handleChangeQ,
-	                        placeholder: "Digite para filtrar opção...",
-	                        ref: "q"
-	                    })
-	                ),
-	                React.createElement(
-	                    "div",
-	                    { className: "super-select-actions" },
-	                    React.createElement(
-	                        "span",
-	                        { className: "super-select-action", onClick: this.selectAll },
-	                        "Selecionar todos"
-	                    ),
-	                    React.createElement(
-	                        "span",
-	                        { className: "super-select-action", onClick: this.clean },
-	                        "Limpar seleção"
-	                    )
-	                ),
-	                React.createElement(
-	                    "ul",
-	                    { className: "super-select-options-list" },
-	                    function () {
-	                        var options = self.getOptions();
-	                        if (!options.length) {
-	                            return React.createElement(
-	                                "li",
-	                                { className: "super-select-options-list-item not-found" },
-	                                "Nada encontrado :/"
-	                            );
-	                        }
-
-	                        return options.map(function (item, index) {
-	                            var className = "super-select-options-list-item";
-	                            if (index === self.state.pseudoHover) {
-	                                className += " hover";
-	                            }
-	                            return React.createElement(
-	                                "li",
-	                                { key: index, className: className },
-	                                React.createElement(
-	                                    "label",
-	                                    null,
-	                                    React.createElement("input", {
-	                                        type: "checkbox",
-	                                        checked: self.isChecked(item),
-	                                        onChange: self.handleChange.bind(null, item)
-	                                    }),
-	                                    item.name
-	                                )
-	                            );
-	                        });
-	                    }()
-	                )
+	                { className: "super-select-content" },
+	                content
 	            );
 	        }
 	    },
@@ -673,9 +731,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return React.createElement(
 	            "div",
-	            { className: "super-select-container" },
+	            { className: "super-select-container", ref: "container",
+	                onKeyUp: this.handleNavigationKeys
+	            },
 	            this.buildbutton(),
-	            this.buildOptions()
+	            this.buildContent()
 	        );
 	    }
 	});
@@ -690,12 +750,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 7 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_7__;
-
-/***/ },
-/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1200,6 +1254,390 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	})(this);
 
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(6);
+
+	/**
+	 * @todo support max display items
+	 */
+
+	var Button = React.createClass({
+	    displayName: "SuperSelect.button",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            label: "",
+	            open: false,
+	            value: null,
+	            options: [],
+	            allOptions: [],
+	            valueKey: "id",
+	            labelKey: "name",
+	            multiple: true,
+	            maxLabels: false,
+	            noLabels: false
+	        };
+	    },
+
+	    getClassName: function getClassName() {
+	        "use strict";
+
+	        return "super-select-button" + (this.props.open ? " open" : "");
+	    },
+
+	    getLabel: function getLabel() {
+	        "use strict";
+
+	        return React.createElement(
+	            "span",
+	            { className: "super-select-button-label" },
+	            this.props.label
+	        );
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        var self = this;
+	        var className = this.getClassName();
+	        var text = [];
+	        var countValues = 0;
+
+	        text.push(this.getLabel());
+	        if (this.props.multiple && this.props.value.length) {
+	            text.push(": ");
+
+	            if (this.props.value.length === this.props.allOptions.length) {
+	                text.push(React.createElement(
+	                    "span",
+	                    { className: "super-select-button-label-value" },
+	                    "todos"
+	                ));
+	            } else if (this.props.noLabels === true) {
+	                text.push(React.createElement(
+	                    "span",
+	                    { className: "super-select-button-label-value", key: "all" },
+	                    this.props.value.length
+	                ));
+	            } else {
+	                this.props.value.map(function (item, index) {
+	                    if (self.props.maxLabels === false || countValues < self.props.maxLabels) {
+	                        text.push(React.createElement(
+	                            "span",
+	                            { className: "super-select-button-label-value", key: index },
+	                            item[self.props.labelKey]
+	                        ));
+	                        countValues++;
+	                    }
+	                });
+
+	                if (self.props.maxLabels !== false && self.props.maxLabels < self.props.value.length) {
+	                    text.push(React.createElement(
+	                        "span",
+	                        { className: "super-select-button-label-value", key: -1 },
+	                        "mais ",
+	                        self.props.value.length - self.props.maxLabels
+	                    ));
+	                }
+	            }
+	        }
+
+	        return React.createElement(
+	            "label",
+	            { className: className,
+	                onClick: this.props.toggle
+	            },
+	            text
+	        );
+	    }
+	});
+
+	module.exports = Button;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(6);
+
+	var Option = __webpack_require__(10);
+
+	var OptionsList = React.createClass({
+	    displayName: "SuperSelect.OptionsList",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            options: [],
+	            isChecked: null,
+	            handleChange: null,
+	            currentHover: false,
+	            labelKey: "name"
+	        };
+	    },
+
+	    renderOptions: function renderOptions() {
+	        "use strict";
+
+	        var self = this;
+	        var options = this.props.options;
+	        if (!options.length) {
+	            return React.createElement(
+	                "li",
+	                { className: "super-select-options-list-item not-found" },
+	                "Nada encontrado :/"
+	            );
+	        }
+
+	        return options.map(function (item, index) {
+	            var className = "super-select-options-list-item";
+	            if (index === self.props.currentHover) {
+	                className += " hover";
+	            }
+
+	            return React.createElement(Option, {
+	                key: index,
+	                hover: index === self.props.currentHover,
+	                checked: self.props.isChecked(item),
+	                onChange: self.props.handleChange,
+	                labelKey: self.props.labelKey,
+	                item: item
+	            });
+	        });
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        return React.createElement(
+	            "div",
+	            { className: "super-select-options-container" },
+	            React.createElement(
+	                "ul",
+	                { className: "super-select-options-list" },
+	                this.renderOptions()
+	            )
+	        );
+	    }
+	});
+
+	module.exports = OptionsList;
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(6);
+
+	var Option = React.createClass({
+	    displayName: "SuperSelect.Option",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            hover: false,
+	            checked: false,
+	            onChange: null,
+	            labelKey: "name",
+	            item: {}
+	        };
+	    },
+
+	    handleChange: function handleChange() {
+	        "use strict";
+
+	        this.props.onChange(this.props.item);
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        var className = "super-select-options-list-item";
+	        if (this.props.hover) {
+	            className += " hover";
+	        }
+
+	        return React.createElement(
+	            "li",
+	            { className: className },
+	            React.createElement(
+	                "label",
+	                null,
+	                React.createElement("input", {
+	                    type: "checkbox",
+	                    checked: this.props.checked,
+	                    onChange: this.handleChange
+	                }),
+	                this.props.item[this.props.labelKey]
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Option;
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(6);
+	var Action = __webpack_require__(12);
+
+	var Actions = React.createClass({
+	    displayName: "SuperSelect.Actions",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            actions: []
+	        };
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        if (!this.props.actions.length) {
+	            return React.createElement("div", null);
+	        }
+
+	        return React.createElement(
+	            "ul",
+	            { className: "super-select-actions" },
+	            this.props.actions.map(function (action, index) {
+	                return React.createElement(Action, _extends({}, action, { key: index }));
+	            })
+	        );
+	    }
+	});
+
+	module.exports = Actions;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(6);
+
+	var Action = React.createClass({
+	    displayName: "SuperSelect.Action",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            handler: function handler() {
+	                console.log("action clicked ;)");
+	            },
+	            label: "Action",
+	            icon: null,
+	            content: null
+	        };
+	    },
+
+	    getContent: function getContent() {
+	        "use strict";
+
+	        return this.props.content || this.props.label;
+	    },
+
+	    getIcon: function getIcon() {
+	        "use strict";
+
+	        return React.createElement(
+	            "span",
+	            null,
+	            "noicon"
+	        );
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        return React.createElement(
+	            "li",
+	            { className: "super-select-action",
+	                onClick: this.props.handler
+	            },
+	            this.getIcon(),
+	            this.getContent()
+	        );
+	    }
+	});
+
+	module.exports = Action;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(6);
+
+	var SearchBox = React.createClass({
+	    displayName: "SuperSelect.SearchBox",
+
+	    getDefaultProps: function getDefaultProps() {
+	        "use strict";
+
+	        return {
+	            searchArgument: "",
+	            searchArgumentChange: null
+	        };
+	    },
+
+	    componentDidUpdate: function componentDidUpdate() {
+	        "use strict";
+
+	        this.refs.q.focus();
+	    },
+
+	    componentDidMount: function componentDidMount() {
+	        "use strict";
+
+	        this.refs.q.focus();
+	    },
+
+	    render: function render() {
+	        "use strict";
+
+	        return React.createElement(
+	            "div",
+	            { className: "super-select-options-search-container" },
+	            React.createElement("input", {
+	                className: "form-control",
+	                type: "search",
+	                value: this.props.searchArgument,
+	                onChange: this.props.searchArgumentChange,
+	                placeholder: "Digite para filtrar opção...",
+	                ref: "q"
+	            })
+	        );
+	    }
+	});
+
+	module.exports = SearchBox;
 
 /***/ }
 /******/ ])
