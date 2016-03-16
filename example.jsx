@@ -20,7 +20,6 @@ var Application = React.createClass({
     render: function () {
         return (
             <div>
-                SuperSelect
                 <div>
                     <SuperSelect
                         label="Filter by OS"
@@ -37,7 +36,7 @@ var Application = React.createClass({
             </div>
         );
     }
-})
+});
 
 ReactDOM.render(
     <Application />,
