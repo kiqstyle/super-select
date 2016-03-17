@@ -4,7 +4,7 @@ A replacement for `select` (?) on web applications.
 > This is still in development
 
 ## Demo
-http://jsbin.com/talabi/latest
+http://jsbin.com/talabi/latest/edit?js,output
 
 ## Basics
 Clone, install deps, start webpack dev server:
