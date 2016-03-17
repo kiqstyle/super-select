@@ -32,7 +32,7 @@ npm run dev
 #### [~] multiple
 #### [x] noLabels
 #### [x] onChange
-#### [ ] optionRender
+#### [x] optionRender
 #### [x] options
 #### [x] searchBox
 #### [x] searchKey

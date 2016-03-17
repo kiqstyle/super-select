@@ -281,6 +281,7 @@ var SuperSelect = React.createClass({
         return (
             <OptionsList
                 options={ this.getOptions() }
+                optionRender={ this.props.optionRender }
                 handleNavigationKeys={ this.handleNavigationKeys }
                 isChecked={ this.isChecked }
                 handleChange={ this.handleChange }

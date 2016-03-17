@@ -561,6 +561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return React.createElement(Button, {
 	            label: this.props.label,
+	            contentLabelProvider: this.props.contentLabelProvider,
 	            open: this.state.open,
 	            value: this.getValue(),
 	            options: this.getOptions(),
@@ -689,6 +690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return React.createElement(OptionsList, {
 	            options: this.getOptions(),
+	            optionRender: this.props.optionRender,
 	            handleNavigationKeys: this.handleNavigationKeys,
 	            isChecked: this.isChecked,
 	            handleChange: this.handleChange,
@@ -1307,7 +1309,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            labelKey: "name",
 	            multiple: true,
 	            maxLabels: false,
-	            noLabels: false
+	            noLabels: false,
+	            contentLabelProvider: null
 	        };
 	    },
 
@@ -1320,10 +1323,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    getLabel: function getLabel() {
 	        "use strict";
 
+	        var label = this.props.label;
+	        if (typeof this.props.contentLabelProvider === "function") {
+	            label = this.props.contentLabelProvider();
+	        }
+
 	        return React.createElement(
 	            "span",
 	            { className: "super-select-button-label" },
-	            this.props.label
+	            label
 	        );
 	    },
 
@@ -1392,6 +1400,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var React = __webpack_require__(6);
 
 	var Option = __webpack_require__(10);
@@ -1425,19 +1435,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 
 	        return options.map(function (item, index) {
-	            var className = "super-select-options-list-item";
-	            if (index === self.props.currentHover) {
-	                className += " hover";
+	            var optionProps = {
+	                index: index,
+	                pseudoHover: index === self.props.currentHover,
+	                checked: self.props.isChecked(item),
+	                option: item,
+	                onChange: self.props.handleChange,
+	                labelKey: self.props.labelKey
+	            };
+
+	            if (self.props.optionRender) {
+	                return self.props.optionRender(optionProps);
 	            }
 
-	            return React.createElement(Option, {
-	                key: index,
-	                hover: index === self.props.currentHover,
-	                checked: self.props.isChecked(item),
-	                onChange: self.props.handleChange,
-	                labelKey: self.props.labelKey,
-	                item: item
-	            });
+	            return React.createElement(Option, _extends({}, optionProps, { key: index }));
 	        });
 	    },
 
@@ -1473,25 +1484,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "use strict";
 
 	        return {
-	            hover: false,
+	            pseudoHover: false,
 	            checked: false,
 	            onChange: null,
 	            labelKey: "name",
-	            item: {}
+	            option: {}
 	        };
 	    },
 
 	    handleChange: function handleChange() {
 	        "use strict";
 
-	        this.props.onChange(this.props.item);
+	        this.props.onChange(this.props.option);
 	    },
 
 	    render: function render() {
 	        "use strict";
 
 	        var className = "super-select-options-list-item";
-	        if (this.props.hover) {
+	        if (this.props.pseudoHover) {
 	            className += " hover";
 	        }
 
@@ -1506,7 +1517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    checked: this.props.checked,
 	                    onChange: this.handleChange
 	                }),
-	                this.props.item[this.props.labelKey]
+	                this.props.option[this.props.labelKey]
 	            )
 	        );
 	    }

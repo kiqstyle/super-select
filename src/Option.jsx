@@ -7,25 +7,25 @@ var Option = React.createClass({
         "use strict";
 
         return {
-            hover: false,
+            pseudoHover: false,
             checked: false,
             onChange: null,
             labelKey: "name",
-            item: {}
+            option: {}
         };
     },
 
     handleChange: function () {
         "use strict";
 
-        this.props.onChange(this.props.item);
+        this.props.onChange(this.props.option);
     },
 
     render: function () {
         "use strict";
 
         var className = "super-select-options-list-item";
-        if (this.props.hover) {
+        if (this.props.pseudoHover) {
             className += " hover";
         }
 
@@ -37,7 +37,7 @@ var Option = React.createClass({
                         checked={ this.props.checked }
                         onChange={ this.handleChange }
                     />
-                    { this.props.item[this.props.labelKey] }
+                { this.props.option[this.props.labelKey] }
                 </label>
             </li>
         );
