@@ -64,7 +64,7 @@ var Application = React.createClass({
                     </div>
                 </div>
                 <div className="demo">
-                    <h3>Multiple with option render</h3>
+                    <h3>Single</h3>
                     <div className="component">
                         <SuperSelect
                             label="The best OS"
