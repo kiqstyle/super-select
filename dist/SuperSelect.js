@@ -501,6 +501,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    addSuperSelectToEvent: function addSuperSelectToEvent(e) {
 	        "use strict";
 
+	        // @todo i'm not happy with this
+
 	        e.superSelect = this;
 	    },
 
@@ -696,7 +698,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            handleChange: this.handleChange,
 	            currentHover: this.state.pseudoHover,
 	            labelKey: this.props.labelKey,
-	            actions: this.props.actions
+	            actions: this.props.actions,
+	            multiple: this.props.multiple
 	        });
 	    },
 
@@ -1417,6 +1420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            isChecked: null,
 	            handleChange: null,
 	            currentHover: false,
+	            multiple: false,
 	            labelKey: "name"
 	        };
 	    },
@@ -1441,7 +1445,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                checked: self.props.isChecked(item),
 	                option: item,
 	                onChange: self.props.handleChange,
-	                labelKey: self.props.labelKey
+	                labelKey: self.props.labelKey,
+	                multiple: self.props.multiple
 	            };
 
 	            if (self.props.optionRender) {
@@ -1488,6 +1493,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            checked: false,
 	            onChange: null,
 	            labelKey: "name",
+	            multiple: false,
 	            option: {}
 	        };
 	    },
@@ -1502,6 +1508,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        "use strict";
 
 	        var className = "super-select-options-list-item";
+	        var type = this.props.multiple ? "checkbox" : "radio";
+
 	        if (this.props.pseudoHover) {
 	            className += " hover";
 	        }
@@ -1513,7 +1521,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                "label",
 	                null,
 	                React.createElement("input", {
-	                    type: "checkbox",
+	                    type: type,
 	                    checked: this.props.checked,
 	                    onChange: this.handleChange
 	                }),

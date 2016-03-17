@@ -11,6 +11,7 @@ var Option = React.createClass({
             checked: false,
             onChange: null,
             labelKey: "name",
+            multiple: false,
             option: {}
         };
     },
@@ -25,6 +26,8 @@ var Option = React.createClass({
         "use strict";
 
         var className = "super-select-options-list-item";
+        var type = this.props.multiple ? "checkbox" : "radio";
+
         if (this.props.pseudoHover) {
             className += " hover";
         }
@@ -33,7 +36,7 @@ var Option = React.createClass({
             <li className={ className }>
                 <label>
                     <input
-                        type="checkbox"
+                        type={ type }
                         checked={ this.props.checked }
                         onChange={ this.handleChange }
                     />

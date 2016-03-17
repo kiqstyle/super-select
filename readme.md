@@ -29,7 +29,7 @@ npm run dev
 #### [x] label
 #### [x] labelkey
 #### [x] maxLabels
-#### [~] multiple
+#### [x] multiple
 #### [x] noLabels
 #### [x] onChange
 #### [x] optionRender

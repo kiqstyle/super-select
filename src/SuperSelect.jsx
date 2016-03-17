@@ -88,6 +88,7 @@ var SuperSelect = React.createClass({
     addSuperSelectToEvent: function (e) {
         "use strict";
 
+        // @todo i'm not happy with this
         e.superSelect = this;
     },
 
@@ -288,6 +289,7 @@ var SuperSelect = React.createClass({
                 currentHover={ this.state.pseudoHover }
                 labelKey={ this.props.labelKey }
                 actions={ this.props.actions }
+                multiple={ this.props.multiple }
             />
         );
     },

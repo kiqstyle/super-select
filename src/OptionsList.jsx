@@ -13,6 +13,7 @@ var OptionsList = React.createClass({
             isChecked: null,
             handleChange: null,
             currentHover: false,
+            multiple: false,
             labelKey: "name"
         };
     },
@@ -37,7 +38,8 @@ var OptionsList = React.createClass({
                 checked: self.props.isChecked(item),
                 option: item,
                 onChange: self.props.handleChange,
-                labelKey: self.props.labelKey
+                labelKey: self.props.labelKey,
+                multiple: self.props.multiple
             };
 
             if (self.props.optionRender) {
