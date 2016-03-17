@@ -470,7 +470,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            searchKeys: ["name"],
 	            value: null,
 	            valueKey: "id",
-	            valueLink: false
+	            valueLink: false,
+
+	            // html attrs
+	            tabIndex: 0
 	        };
 	    },
 
@@ -573,15 +576,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            multiple: this.props.multiple,
 	            toggle: this.toggle,
 	            maxLabels: this.props.maxLabels,
-	            noLabels: this.props.noLabels
+	            noLabels: this.props.noLabels,
+	            tabIndex: this.props.tabIndex,
+	            handleFocus: this.handleFocus
 	        });
 	    },
 
-	    toggle: function toggle() {
+	    toggle: function toggle(forceState) {
 	        "use strict";
 
+	        var newState = typeof forceState === "boolean" ? forceState : !this.state.open;
 	        this.setState({
-	            open: !this.state.open,
+	            open: newState,
 	            pseudoHover: null
 	        });
 	    },
@@ -665,8 +671,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var currentPosition = this.state.pseudoHover;
 	        var isEnter = e.key === "Enter";
+	        var open = this.state.open;
+	        var self = this;
 
-	        if (isEnter && !isNaN(currentPosition)) {
+	        if (isEnter && !isNaN(currentPosition) && open) {
 	            var option = this.getOptions()[currentPosition] || false;
 	            if (option) {
 	                this.handleChange(option);
@@ -676,14 +684,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        switch (e.key) {
 	            case "ArrowUp":
 	                currentPosition = !currentPosition ? 0 : currentPosition - 1;
+	                open = true;
 	                break;
 	            case "ArrowDown":
 	                currentPosition = currentPosition + 1 === this.getOptions().length ? currentPosition : currentPosition + 1;
+	                open = true;
 	                break;
 	        }
 
+	        if (["Escape", "Tab"].indexOf(e.key) > -1) {
+	            open = false;
+	        }
+
 	        this.setState({
+	            open: open,
 	            pseudoHover: currentPosition
+	        }, function () {
+	            if (open === false) {
+	                self.refs.container.focus();
+	            }
 	        });
 	    },
 
@@ -761,7 +780,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return React.createElement(
 	            "div",
 	            { className: "super-select-container", ref: "container",
-	                onKeyUp: this.handleNavigationKeys
+	                onKeyDown: this.handleNavigationKeys,
+	                tabIndex: this.props.tabIndex
 	            },
 	            this.buildbutton(),
 	            this.buildContent()
@@ -1387,7 +1407,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return React.createElement(
 	            "label",
-	            { className: className,
+	            {
+	                className: className,
 	                onClick: this.props.toggle
 	            },
 	            text
@@ -1523,7 +1544,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                React.createElement("input", {
 	                    type: type,
 	                    checked: this.props.checked,
-	                    onChange: this.handleChange
+	                    onChange: this.handleChange,
+	                    tabIndex: "-1"
 	                }),
 	                this.props.option[this.props.labelKey]
 	            )

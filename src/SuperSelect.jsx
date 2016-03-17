@@ -57,7 +57,10 @@ var SuperSelect = React.createClass({
             searchKeys: ["name"],
             value: null,
             valueKey: "id",
-            valueLink: false
+            valueLink: false,
+
+            // html attrs
+            tabIndex: 0
         };
     },
 
@@ -160,15 +163,18 @@ var SuperSelect = React.createClass({
                 toggle={ this.toggle }
                 maxLabels={ this.props.maxLabels }
                 noLabels={ this.props.noLabels }
+                tabIndex={ this.props.tabIndex }
+                handleFocus={ this.handleFocus }
             />
         );
     },
 
-    toggle: function () {
+    toggle: function (forceState) {
         "use strict";
 
+        var newState = typeof forceState === "boolean" ? forceState : !this.state.open;
         this.setState({
-            open: !this.state.open,
+            open: newState,
             pseudoHover: null
         });
     },
@@ -254,8 +260,10 @@ var SuperSelect = React.createClass({
 
         var currentPosition = this.state.pseudoHover;
         var isEnter = e.key === "Enter";
+        var open = this.state.open;
+        var self = this;
 
-        if (isEnter && !isNaN(currentPosition)) {
+        if (isEnter && !isNaN(currentPosition) && open) {
             var option = this.getOptions()[currentPosition] || false;
             if (option) {
                 this.handleChange(option);
@@ -265,14 +273,25 @@ var SuperSelect = React.createClass({
         switch (e.key) {
             case "ArrowUp":
                 currentPosition = !currentPosition ? 0 : currentPosition - 1;
+                open = true;
                 break;
             case "ArrowDown":
                 currentPosition = currentPosition + 1 === this.getOptions().length ? currentPosition : currentPosition + 1;
+                open = true;
                 break;
         }
 
+        if (["Escape", "Tab"].indexOf(e.key) > -1) {
+            open = false;
+        }
+
         this.setState({
+            open: open,
             pseudoHover: currentPosition
+        }, function () {
+            if (open === false) {
+                self.refs.container.focus();
+            }
         });
     },
 
@@ -353,7 +372,8 @@ var SuperSelect = React.createClass({
 
         return (
             <div className="super-select-container" ref="container"
-                onKeyUp={ this.handleNavigationKeys }
+                onKeyDown={ this.handleNavigationKeys }
+                tabIndex={ this.props.tabIndex }
             >
                 { this.buildbutton() }
                 { this.buildContent() }

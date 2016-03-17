@@ -93,7 +93,8 @@ var Button = React.createClass({
         }
 
         return (
-            <label className={ className }
+            <label
+                className={ className }
                 onClick={ this.props.toggle }
             >
                 { text }

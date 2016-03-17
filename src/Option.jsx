@@ -39,6 +39,7 @@ var Option = React.createClass({
                         type={ type }
                         checked={ this.props.checked }
                         onChange={ this.handleChange }
+                        tabIndex="-1"
                     />
                 { this.props.option[this.props.labelKey] }
                 </label>

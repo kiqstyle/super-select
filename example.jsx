@@ -25,6 +25,7 @@ var Application = React.createClass({
                     <h3>Simple multiple</h3>
                     <div className="component">
                         <SuperSelect
+                            tabIndex={ 0 }
                             label="Filter by OS"
                             options={ this.state.options }
                             value={ this.state.selecteds }
