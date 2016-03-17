@@ -23,6 +23,10 @@ var Application = React.createClass({
                 <div>
                     <SuperSelect
                         label="Filter by OS"
+                        contentLabelProvider={ function () {
+                            console.log("jongh")
+                            return "xxxx" ;
+                        } }
                         options={ this.state.options }
                         value={ this.state.selecteds }
                         onChange={ function (newSelecteds) {

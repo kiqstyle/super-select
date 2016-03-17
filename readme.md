@@ -24,7 +24,7 @@ npm run dev
 ### Props
 #### [x] actions
 #### [x] content
-#### [ ] contentLabelProvider
+#### [x] contentLabelProvider
 #### [ ] groups
 #### [x] label
 #### [x] labelkey

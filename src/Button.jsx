@@ -20,7 +20,8 @@ var Button = React.createClass({
             labelKey: "name",
             multiple: true,
             maxLabels: false,
-            noLabels: false
+            noLabels: false,
+            contentLabelProvider: null
         };
     },
 
@@ -33,9 +34,14 @@ var Button = React.createClass({
     getLabel: function () {
         "use strict";
 
+        var label = this.props.label;
+        if (typeof this.props.contentLabelProvider === "function") {
+            label = this.props.contentLabelProvider();
+        }
+
         return (
             <span className="super-select-button-label">
-                { this.props.label }
+                { label }
             </span>
         );
     },

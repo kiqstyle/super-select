@@ -148,6 +148,7 @@ var SuperSelect = React.createClass({
         return (
             <Button
                 label={ this.props.label }
+                contentLabelProvider={ this.props.contentLabelProvider }
                 open={ this.state.open }
                 value={ this.getValue() }
                 options={ this.getOptions() }
